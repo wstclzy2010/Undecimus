@@ -1060,6 +1060,9 @@ void jailbreak()
             LOG("Disabling Auto Updates...");
             SETMESSAGE(NSLocalizedString(@"Failed to disable auto updates.", nil));
             for (NSString *path in array) {
+                if (!is_directory(path.UTF8String) && !is_symlink(path.UTF8String)) {
+                    ensure_directory(path.UTF8String, 0, 0755);
+                }
                 ensure_symlink("/dev/null", path.UTF8String);
             }
             _assert(modifyPlist(@"/var/mobile/Library/Preferences/com.apple.Preferences.plist", ^(id plist) {
