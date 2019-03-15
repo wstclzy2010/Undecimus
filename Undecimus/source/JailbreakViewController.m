@@ -854,9 +854,9 @@ void jailbreak()
             PF(mov_x10_x3__br_x6);
             PF(kernel_forge_pacia_gadget);
             PF(kernel_forge_pacda_gadget);
-            PF(IOUserClient__vtable);
-            PF(IORegistryEntry__getRegistryEntryID);
         }
+        PF(IOUserClient__vtable);
+        PF(IORegistryEntry__getRegistryEntryID);
 #undef PF
         found_offsets = true;
         LOG("Successfully found offsets.");
